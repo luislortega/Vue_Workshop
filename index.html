@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons"
+            rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css"
+            rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+            maximum-scale=1, user-scalable=no, minimal-ui">
+    </head>
+    <body>
+        <div id="app">
+            <v-app>
+                <v-content>
+                    <v-container grid-list-md >
+                        <v-layout row wrap>
+                            <v-flex xs12 text-xs-center>
+                                <img
+                                    :src="`https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Vue.js_Logo.svg/2000px-Vue.js_Logo.svg.png`"
+                                    width="200" />
+                                <h1>ToDo</h1>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-text-field
+                                    label="Escribir una tarea"
+                                    v-model="tarea"
+                                    :rules="[required]"
+                                    v-on:keyup.enter="crearTarea"></v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <div v-for="item in tareas">
+                                    <v-card>
+                                        <v-card-title primary-title>
+                                                <h3 class="headline mb-0">Tarea #{{item.id}}</h3>
+                                        </v-card-title>
+                                        <div class="ml-3">
+                                            <p>{{item.texto}}</p>
+                                        </div>
+                                        <v-card-actions>
+                                            <v-btn color="error"
+                                                @click="borrar(item)">Completar
+                                                tarea</v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                    <br>
+                                </div>
+                            </v-flex>
+                            <v-snackbar
+                                v-model="snackbar"
+                                :bottom="y === 'bottom'"
+                                :left="x === 'left'"
+                                :multi-line="mode === 'multi-line'"
+                                :right="x === 'right'"
+                                :timeout="timeout"
+                                :top="y === 'top'"
+                                :vertical="mode === 'vertical'">
+                                {{ text }}
+                            </v-snackbar>
+                        </v-layout>
+                    </v-container>
+                </v-content>
+            </v-app>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+        <script src="vue.js"></script>
+    </body>
+</html>
