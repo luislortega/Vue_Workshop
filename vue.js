@@ -7,8 +7,7 @@ new Vue({ el: '#app',
             tareas:[
                 {
                     id: 1,
-                    texto: "Mi primer tarea",
-                    complete: false
+                    texto: "Mi primer tarea"
                 }
             ],
             required: (value) => !!value || "No aceptamos valores vacios :(",
@@ -24,7 +23,7 @@ new Vue({ el: '#app',
         //Todos nuestros metodos.
         crearTarea(){
             if(this.tarea){
-                this.tareas.push({id:this.tareas.length + 1, texto: this.tarea, complete: false})
+                this.tareas.push({id:this.tareas.length + 1, texto: this.tarea})
                 this.text = "Tarea agregada"
                 this.snackbar = true
             }else{
